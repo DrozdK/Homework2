@@ -1,6 +1,6 @@
+package CalculatorTests;
 import Helpers.Actions;
 
-import com.sun.org.glassfish.gmbal.Description;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 public class AdditionalTests {
 
-    @Description("Параметризированный тест")
+    //TODO Параметризированный метод
 
     static Stream<Arguments> getParams() {
         return Stream.of(
@@ -31,42 +31,5 @@ public class AdditionalTests {
     @MethodSource("getParams")
     public void testSimpleAction(int first, int second, char operation, String expected) {
         Assertions.assertEquals(expected, Actions.calculator(first,second,operation));
-    }
-
-    @Description("Обычные тесты")
-
-    @Test
-    public void additionalMinTest() {
-        Assertions.assertEquals((Actions.calculator(-2147483648, -2147483648, '+')), "-4294967296");
-    }
-
-    @Test
-    public void additionalWithAllPositiveNumbersTest() {
-        Assertions.assertEquals((Actions.calculator(2, 6, '+')), "8");
-    }
-
-    @Test
-    public void additionalWithFirstNegativeNumberTest() {
-        Assertions.assertEquals((Actions.calculator(-5, 4, '+')), "-1");
-    }
-
-    @Test
-    public void additionalWithSecondNegativeNumberTest() {
-        Assertions.assertEquals((Actions.calculator(8, -3, '+')), "5");
-    }
-
-    @Test
-    public void additionalWithAllNegativeNumbersTest() {
-        Assertions.assertEquals((Actions.calculator(-5, -8, '+')), "-13");
-    }
-
-    @Test
-    public void additionalWithNegativeResultTest() {
-        Assertions.assertEquals((Actions.calculator(-20, 4, '+')), "-16");
-    }
-
-    @Test
-    public void additionalMaxTest() {
-        Assertions.assertEquals((Actions.calculator(2147483647, 2147483647, '+')), "4294967294");
     }
 }

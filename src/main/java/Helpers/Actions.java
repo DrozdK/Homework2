@@ -5,34 +5,19 @@ import java.util.Scanner;
 public class Actions {
     static Scanner sc = new Scanner(System.in);
 
-    public static int getFirstNumber() {
-        System.out.println(TextHelper.ENTER_FIRST_NUMBER_TEXT.getText());
+    public int getNumber() {
         int number;
         if (sc.hasNextInt()) {
             number = sc.nextInt();
         } else {
-            System.out.println(TextHelper.INCORRECT_NUMBER_TEXT.getText());
+            System.out.println("Incorrect value. Try again");
             sc.next();
-            number = getFirstNumber();
-        }
-        return number;
-    }
-
-    public static int getSecondNumber() {
-        System.out.println(TextHelper.ENTER_SECOND_NUMBER_TEXT.getText());
-        int number;
-        if (sc.hasNextInt()) {
-            number = sc.nextInt();
-        } else {
-            System.out.println(TextHelper.INCORRECT_NUMBER_TEXT.getText());
-            sc.next();
-            number = getSecondNumber();
+            number = getNumber();
         }
         return number;
     }
 
     public static char getOperation() {
-        System.out.println(TextHelper.ENTER_OPERATION_TEXT.getText());
         char operation;
         operation = sc.next().charAt(0);
         return operation;
@@ -52,14 +37,14 @@ public class Actions {
                 break;
             case '/':
                 if (secondNum == 0) {
-                    System.out.println(TextHelper.DIVIDE_BY_ZERO_TEXT.getText() + "\n"
-                            + TextHelper.ENTER_SECOND_NUMBER_TEXT.getText());
+                    System.out.println("You can't divide by zero. Try again" + "\n"
+                            + "Enter second number:");
                     secondNum = sc.nextInt();
                 }
                 result = Operations.divide(fistNum, secondNum);
                 break;
             default:
-                System.out.println(TextHelper.INCORRECT_OPERATION_TEXT.getText());
+                System.out.println("Invalid operation.Valid values are: \"+\", \"-\", \"*\", \"/\". Try again");
                 result = calculator(fistNum, secondNum, getOperation());
         }
         return result;
