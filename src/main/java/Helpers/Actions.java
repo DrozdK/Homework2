@@ -36,11 +36,6 @@ public class Actions {
                 result = Operations.multiplication(fistNum, secondNum);
                 break;
             case '/':
-                if (secondNum == 0) {
-                    System.out.println("You can't divide by zero. Try again" + "\n"
-                            + "Enter second number:");
-                    secondNum = sc.nextInt();
-                }
                 result = Operations.divide(fistNum, secondNum);
                 break;
             default:

@@ -26,6 +26,9 @@ public class Operations {
     public static String divide (int firstNum, int secondNum) {
         BigDecimal firstNumLong = new BigDecimal(firstNum);
         BigDecimal secondNumLong = new BigDecimal(secondNum);
+        if (secondNum == 0) {
+            throw new DivisionByZeroException("You can't divide by zero");
+        }
         return firstNumLong.divide(secondNumLong, MathContext.DECIMAL128).toString();
     }
 }
