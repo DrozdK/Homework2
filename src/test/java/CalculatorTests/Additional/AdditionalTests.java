@@ -1,7 +1,8 @@
-package CalculatorTests;
+package CalculatorTests.Additional;
 import Helpers.Actions;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -33,6 +34,7 @@ public class AdditionalTests {
     }
 
     @ParameterizedTest
+    @Tag("additionalTests")
     @MethodSource("getParams")
     public void testSimpleAction(int first, int second, char operation, String expected) {
         Assertions.assertEquals(expected, Actions.calculator(first,second,operation));

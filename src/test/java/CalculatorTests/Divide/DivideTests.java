@@ -1,10 +1,11 @@
-package CalculatorTests;
+package CalculatorTests.Divide;
 
 import Helpers.Actions;
 
 import Helpers.DivisionByZeroException;
 import Helpers.Operations;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -40,11 +41,13 @@ public class DivideTests {
 
     @ParameterizedTest
     @MethodSource("getParams")
+    @Tag("divideTests")
     public void testSimpleAction(int first, int second, char operation, String expected) {
         Assertions.assertEquals(expected, Actions.calculator(first, second, operation));
     }
 
     @Test
+    @Tag("divideTests")
     public void testDivideByZero () {
         Assertions.assertThrows(DivisionByZeroException.class, () -> Operations.divide(1,0));
     }
